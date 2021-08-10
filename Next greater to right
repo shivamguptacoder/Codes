@@ -1,0 +1,21 @@
+  vector<long long> nextLargerElement(vector<long long> arr, int n){
+        // Your code here
+     unordered_map<long long,long long> m;
+     stack<long long> s;
+     for(auto i:arr)
+     {
+          while(s.size() && s.top()<i)
+          {
+               m[s.top()] =i;
+               s.pop();
+          }
+          s.push(i);
+     }
+     vector<long long> ans;
+     for (auto i:arr)
+     {
+          /* code */
+          ans.push_back(m.count(i)?m[i]:-1);
+     }
+     return ans;
+    }
